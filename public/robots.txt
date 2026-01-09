@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /login
+Disallow: /signup
+Disallow: /schedule
+Disallow: /employees
+Disallow: /api/
+
+# Specific crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Sitemap location
+Sitemap: https://escalpronta.com/sitemap.xml
+
+# Crawl delay
+Crawl-delay: 1
