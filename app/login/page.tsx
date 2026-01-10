@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label"
 import { Loader2 } from "lucide-react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
 
@@ -46,6 +46,14 @@ export default function LoginPage() {
       setLoading(false)
     }
   }
+
+  useEffect(() => {
+    const token = localStorage.getItem("escalaProntaToken")
+
+    if (token) {
+      router.replace("/schedule")
+    }
+  }, [router])
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
