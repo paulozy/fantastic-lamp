@@ -1,4 +1,6 @@
+import { StructuredData } from "@/components/structured-data"
 import { Button } from "@/components/ui/button"
+import { organizationSchema, softwareAppSchema } from "@/lib/metadata"
 import {
   AlertCircle,
   CalendarDays,
@@ -11,11 +13,36 @@ import {
   XCircle,
   Zap,
 } from "lucide-react"
+import type { Metadata } from "next"
 import Link from "next/link"
+
+export const metadata: Metadata = {
+  title: "EscalaPronta - Gerador de Escalas de Trabalho Automático",
+  description:
+    "Gere escalas de trabalho automáticas em segundos. Sem planilhas, sem dor de cabeça. Grátis para equipes de até 5 funcionários.",
+  keywords: [
+    "escala de trabalho",
+    "agendamento",
+    "gestão de equipe",
+    "restaurante",
+    "software de agendamento",
+    "escalas automáticas",
+  ],
+  openGraph: {
+    title: "EscalaPronta - Gerador de Escalas de Trabalho Automático",
+    description:
+      "Gere escalas de trabalho automáticas em segundos. Sem planilhas, sem dor de cabeça.",
+    type: "website",
+    url: "https://escalpronta.com.br",
+  },
+}
 
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-white">
+      <StructuredData schema={organizationSchema} />
+      <StructuredData schema={softwareAppSchema} />
+
       {/* Header */}
       <header className="border-b border-gray-100">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -34,10 +61,10 @@ export default function LandingPage() {
       {/* Hero Section */}
       <section className="max-w-4xl mx-auto px-6 py-24 text-center">
         <h1 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight tracking-tight text-balance">
-          Sua escala pronta em 1 clique. Sem planilha. Sem confusão.
+          Sua escala pronta em 1 clique. Sem planilha. Sem confusão. Sem dor de cabeça.
         </h1>
         <p className="mt-6 text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto leading-relaxed text-balance">
-          Pare de perder horas toda semana montando escala na mão. Deixa que a gente resolve.
+          Pare de perder horas toda semana montando escala na mão. Deixa que o EscalaPronta resolve.
         </p>
         <Button size="lg" className="mt-10 bg-blue-600 hover:bg-blue-700 text-white text-lg px-8 py-6 h-auto" asChild>
           <Link href="/signup">Criar minha escala agora</Link>
@@ -52,7 +79,7 @@ export default function LandingPage() {
             Cansado de lidar com isso toda semana?
           </h2>
           <p className="text-gray-600 text-center text-lg mb-12">
-            Você não está sozinho. Todo pequeno negócio passa por isso.
+            Você não está sozinho. Todo pequeno negócio passa por isso — toda semana.
           </p>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="flex gap-4 p-5 bg-white rounded-xl border border-gray-200">
@@ -170,7 +197,7 @@ export default function LandingPage() {
                 <Users className="w-6 h-6 text-blue-600" />
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Feito pra quem é pequeno</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">Feito pra pequeno negócio de verdade</h3>
                 <p className="text-gray-600 leading-relaxed">
                   Nada de sistema complicado. Simples, direto, funciona. Restaurante, limpeza, loja, salão.
                 </p>
@@ -252,7 +279,7 @@ export default function LandingPage() {
             Pare de perder tempo com escala. Resolva isso hoje.
           </h2>
           <p className="text-blue-100 text-lg mb-10">
-            Cadastro grátis. Sem cartão. Sua primeira escala pronta em 5 minutos.
+            Cadastro grátis. Sem cartão. Sua primeira escala pronta agora.
           </p>
           <Button
             size="lg"

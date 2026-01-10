@@ -145,7 +145,6 @@ export default function SchedulePage() {
         return
       }
       const empData = await empRes.json()
-      console.log(empData)
       setEmployees(empData.employees || [])
 
       const weekStartStr = formatDate(currentWeekStart)
@@ -335,7 +334,6 @@ export default function SchedulePage() {
         startTime: addShiftStartTime,
         endTime: addShiftEndTime,
       }
-      console.log("[v0] Creating shift with payload:", shiftPayload)
 
       const shiftRes = await fetch(`${API_URL}/shifts`, {
         method: "POST",

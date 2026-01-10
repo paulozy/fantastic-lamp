@@ -13,13 +13,6 @@ export async function sendFeedback(data: FeedbackData): Promise<{ success: boole
   const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
   const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
   const apiKey = process.env.NEXT_PUBLIC_EMAILJS_API_KEY
-  console.log("Sending feedback", {
-    serviceId,
-    templateId,
-    apiKey,
-    data
-  })
-
 
   if (!serviceId || !templateId || !apiKey) {
     return { success: false, error: "EmailJS configuration missing" }
@@ -51,8 +44,7 @@ export async function sendFeedback(data: FeedbackData): Promise<{ success: boole
     }
 
     return { success: true }
-  } catch (error) {
-    console.log("Error sending feedback", error)
+  } catch {
     return { success: false, error: "Erro ao enviar feedback" }
   }
 }

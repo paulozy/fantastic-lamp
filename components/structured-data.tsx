@@ -1,13 +1,13 @@
 
 interface StructuredDataProps {
-  data: Record<string, unknown>
+  schema: Record<string, unknown>
 }
 
-export function StructuredData({ data }: StructuredDataProps) {
+export function StructuredData({ schema }: StructuredDataProps) {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
     />
   )
 }

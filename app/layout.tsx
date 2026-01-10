@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   authors: [
     {
       name: "EscalaPronta",
-      url: "https://escalpronta.com",
+      url: "https://escalpronta.com.br",
     },
   ],
   creator: "EscalaPronta",
@@ -35,14 +35,14 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://escalpronta.com"),
+  metadataBase: new URL("https://escalpronta.com.br"),
   alternates: {
-    canonical: "https://escalpronta.com",
+    canonical: "https://escalpronta.com.br",
   },
   openGraph: {
     type: "website",
     locale: "pt_BR",
-    url: "https://escalpronta.com",
+    url: "https://escalpronta.com.br",
     siteName: "EscalaPronta",
     title: "EscalaPronta - Escalas de trabalho automáticas",
     description:

@@ -2,9 +2,9 @@ import type { Metadata } from "next"
 
 export function generateMetadata(override: Partial<Metadata> = {}): Metadata {
   return {
-    metadataBase: new URL("https://escalpronta.com"),
+    metadataBase: new URL("https://escalpronta.com.br"),
     alternates: {
-      canonical: "https://escalpronta.com",
+      canonical: "https://escalpronta.com.br",
     },
     robots: {
       index: true,
@@ -28,7 +28,7 @@ export function generatePageMetadata(
   path: string,
   override: Partial<Metadata> = {}
 ): Metadata {
-  const url = `https://escalpronta.com${path}`
+  const url = `https://escalpronta.com.br${path}`
 
   return generateMetadata({
     title,
@@ -67,8 +67,8 @@ export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "EscalaPronta",
-  url: "https://escalpronta.com",
-  logo: "https://escalpronta.com/logo.png",
+  url: "https://escalpronta.com.br",
+  logo: "https://escalpronta.com.br/logo.png",
   description:
     "Gere automaticamente a escala semanal da sua equipe em segundos.",
   sameAs: [
@@ -88,7 +88,7 @@ export const softwareAppSchema = {
   name: "EscalaPronta",
   description:
     "Gere automaticamente a escala semanal da sua equipe em segundos. Sem planilhas, sem dor de cabeça.",
-  url: "https://escalpronta.com",
+  url: "https://escalpronta.com.br",
   applicationCategory: "BusinessApplication",
   operatingSystem: "Web",
   offers: {
