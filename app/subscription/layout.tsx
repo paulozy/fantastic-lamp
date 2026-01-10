@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     title: "Minha Assinatura - EscalaPronta",
     description: "Gerencie sua assinatura",
     type: "website",
-    url: "https://escalpronta.com.br/subscription",
+    url: "https://escalapronta.com.br/subscription",
   },
 }
 

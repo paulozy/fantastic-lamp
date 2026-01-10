@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     description:
       "Gere escalas de trabalho automáticas em segundos. Sem planilhas, sem dor de cabeça.",
     type: "website",
-    url: "https://escalpronta.com.br",
+    url: "https://escalapronta.com.br",
   },
 }
 

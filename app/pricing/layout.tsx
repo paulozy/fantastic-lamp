@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     description:
       "Escolha o plano certo para sua equipe. Comece grátis ou faça upgrade para PRO.",
     type: "website",
-    url: "https://escalpronta.com.br/pricing",
+    url: "https://escalapronta.com.br/pricing",
   },
 }
 

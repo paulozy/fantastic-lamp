@@ -1,15 +1,15 @@
 // Next.js SEO Configuration
 export const seoConfig = {
   siteName: "EscalaPronta",
-  siteUrl: "https://escalpronta.com.br",
+  siteUrl: "https://escalapronta.com.br",
   description:
     "Gere automaticamente a escala semanal da sua equipe em segundos. Sem planilhas, sem dor de cabeça.",
-  ogImage: "https://escalpronta.com.br/og-image.png",
-  twitter: "@escalpronta",
+  ogImage: "https://escalapronta.com.br/og-image.png",
+  twitter: "@escalapronta",
   social: {
-    twitter: "https://twitter.com/escalpronta",
-    instagram: "https://instagram.com/escalpronta",
-    linkedin: "https://linkedin.com/company/escalpronta",
+    twitter: "https://twitter.com/escalapronta",
+    instagram: "https://instagram.com/escalapronta",
+    linkedin: "https://linkedin.com/company/escalapronta",
   },
   keywords: [
     "escala de trabalho",

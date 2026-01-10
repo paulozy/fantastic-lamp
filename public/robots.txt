@@ -15,7 +15,7 @@ User-agent: Bingbot
 Allow: /
 
 # Sitemap location
-Sitemap: https://escalpronta.com.br/sitemap.xml
+Sitemap: https://escalapronta.com.br/sitemap.xml
 
 # Crawl delay
 Crawl-delay: 1
