@@ -2,9 +2,9 @@ import type { Metadata } from "next"
 
 export function generateMetadata(override: Partial<Metadata> = {}): Metadata {
   return {
-    metadataBase: new URL("https://escalpronta.com.br"),
+    metadataBase: new URL("https://escalapronta.com.br"),
     alternates: {
-      canonical: "https://escalpronta.com.br",
+      canonical: "https://escalapronta.com.br",
     },
     robots: {
       index: true,
@@ -28,7 +28,7 @@ export function generatePageMetadata(
   path: string,
   override: Partial<Metadata> = {}
 ): Metadata {
-  const url = `https://escalpronta.com.br${path}`
+  const url = `https://escalapronta.com.br${path}`
 
   return generateMetadata({
     title,
@@ -67,13 +67,13 @@ export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "EscalaPronta",
-  url: "https://escalpronta.com.br",
-  logo: "https://escalpronta.com.br/logo.png",
+  url: "https://escalapronta.com.br",
+  logo: "https://escalapronta.com.br/logo.png",
   description:
     "Gere automaticamente a escala semanal da sua equipe em segundos.",
   sameAs: [
-    "https://twitter.com/escalpronta",
-    "https://instagram.com/escalpronta",
+    "https://twitter.com/escalapronta",
+    "https://instagram.com/escalapronta",
   ],
   contactPoint: {
     "@type": "ContactPoint",
@@ -88,7 +88,7 @@ export const softwareAppSchema = {
   name: "EscalaPronta",
   description:
     "Gere automaticamente a escala semanal da sua equipe em segundos. Sem planilhas, sem dor de cabeça.",
-  url: "https://escalpronta.com.br",
+  url: "https://escalapronta.com.br",
   applicationCategory: "BusinessApplication",
   operatingSystem: "Web",
   offers: {
