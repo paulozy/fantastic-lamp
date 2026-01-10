@@ -2,14 +2,14 @@
 
 import type React from "react"
 
-import { useState } from "react"
-import { useRouter } from "next/navigation"
-import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Loader2 } from "lucide-react"
+import Link from "next/link"
+import { useRouter } from "next/navigation"
+import { useState } from "react"
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
 
@@ -58,9 +58,7 @@ export default function SignUpPage() {
 
       localStorage.setItem("escalaProntaToken", data.token)
 
-      // Redirect to employees page - keep loading state true during redirect
       router.push("/employees")
-      // Don't set isLoading to false here - let the redirect complete
       return
     } catch (err) {
       setError(err instanceof Error ? err.message : "Erro ao criar conta. Tente novamente.")

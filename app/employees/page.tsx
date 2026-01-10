@@ -2,16 +2,17 @@
 
 import type React from "react"
 
-import { useEffect, useState } from "react"
-import { useRouter } from "next/navigation"
+import { PaywallModal } from "@/components/paywall-modal"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Plus, Pencil, UserX } from "lucide-react"
+import { Pencil, Plus, UserX } from "lucide-react"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
+import { useEffect, useState } from "react"
 
 interface Employee {
   id: string
@@ -65,6 +66,8 @@ export default function EmployeesPage() {
   const [dialogOpen, setDialogOpen] = useState(false)
   const [editingEmployee, setEditingEmployee] = useState<Employee | null>(null)
   const [formData, setFormData] = useState<EmployeeFormData>(initialFormData)
+  const [paywallOpen, setPaywallOpen] = useState(false)
+  const [paywallType, setPaywallType] = useState<"PLAN_LIMIT_REACHED" | "FEATURE_NOT_AVAILABLE">("PLAN_LIMIT_REACHED")
 
   useEffect(() => {
     const token = localStorage.getItem("escalaProntaToken")
@@ -76,7 +79,6 @@ export default function EmployeesPage() {
 
     fetchEmployees()
   }, [])
-
 
   const getAuthHeaders = () => {
     const token = localStorage.getItem("escalaProntaToken")
@@ -145,7 +147,6 @@ export default function EmployeesPage() {
 
     try {
       if (editingEmployee) {
-        // Update employee
         const response = await fetch(`${API_URL}/employees/${editingEmployee.id}`, {
           method: "PUT",
           headers: getAuthHeaders(),
@@ -156,7 +157,6 @@ export default function EmployeesPage() {
           throw new Error(data.error || "Falha ao atualizar funcionário")
         }
       } else {
-        // Create employee
         const response = await fetch(`${API_URL}/employees`, {
           method: "POST",
           headers: getAuthHeaders(),
@@ -164,6 +164,13 @@ export default function EmployeesPage() {
         })
         if (!response.ok) {
           const data = await response.json()
+          if (data.error === "PLAN_LIMIT_REACHED" || data.error === "FEATURE_NOT_AVAILABLE") {
+            setDialogOpen(false)
+            setPaywallType(data.error)
+            setPaywallOpen(true)
+            setSaving(false)
+            return
+          }
           throw new Error(data.error || "Falha ao criar funcionário")
         }
       }
@@ -209,6 +216,8 @@ export default function EmployeesPage() {
 
   return (
     <div className="min-h-screen bg-background">
+      <PaywallModal open={paywallOpen} onClose={() => setPaywallOpen(false)} type={paywallType} />
+
       {/* Header */}
       <header className="border-b border-border">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
@@ -221,6 +230,9 @@ export default function EmployeesPage() {
             </Link>
             <Link href="/employees" className="text-foreground font-medium">
               Funcionários
+            </Link>
+            <Link href="/subscription" className="text-muted-foreground hover:text-foreground transition-colors">
+              Assinatura
             </Link>
           </nav>
         </div>
@@ -373,9 +385,8 @@ export default function EmployeesPage() {
                     </TableCell>
                     <TableCell>
                       <span
-                        className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${
-                          employee.active ? "bg-green-100 text-green-700" : "bg-gray-100 text-gray-600"
-                        }`}
+                        className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${employee.active ? "bg-green-100 text-green-700" : "bg-gray-100 text-gray-600"
+                          }`}
                       >
                         {employee.active ? "Ativo" : "Inativo"}
                       </span>

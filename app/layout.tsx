@@ -1,3 +1,4 @@
+import { FeedbackPopupWrapper } from "@/components/feedback-popup-wrapper"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import type { Metadata, Viewport } from "next"
@@ -61,7 +62,7 @@ export const metadata: Metadata = {
     description:
       "Gere automaticamente a escala semanal da sua equipe em segundos.",
     images: ["/og-image.png"],
-    creator: "@escalpronta",
+    creator: "@escalapronda",
   },
   robots: {
     index: true,
@@ -77,18 +78,9 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      {
-        url: "/escala-pronta.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/escala-pronta.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "escala-pronta.png",
-        type: "image/png",
-      },
+      { url: "/escala-pronta.png", media: "(prefers-color-scheme: light)" },
+      { url: "/escala-pronta.png", media: "(prefers-color-scheme: dark)" },
+      { url: "/escala-pronta.png", type: "image/png" },
     ],
     apple: "/escala-pronta.png",
   },
@@ -125,14 +117,14 @@ export default function RootLayout({
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
                 gtag('config', '${gaId}', {
-                  'page_path': window.location.pathname,
+                  page_path: window.location.pathname,
                 });
               `}
             </Script>
           </>
         )}
 
-        {/* Open Graph Verification (if needed) */}
+        {/* Google Site Verification */}
         {process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION && (
           <meta
             name="google-site-verification"
@@ -140,8 +132,12 @@ export default function RootLayout({
           />
         )}
       </head>
-      <body className={`font-sans antialiased`}>
+      <body className="font-sans antialiased">
         {children}
+
+        {/* Feedback Popup (Client Component Wrapper) */}
+        <FeedbackPopupWrapper />
+
         <Analytics />
         <SpeedInsights />
       </body>
