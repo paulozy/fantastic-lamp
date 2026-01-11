@@ -5,8 +5,16 @@ export const metadata: Metadata = {
   description:
     "Crie sua conta grátis no EscalaPronta e comece a gerar escalas automáticas",
   robots: {
-    index: false,
-    follow: false,
+    index: true,
+    follow: true,
+    nocache: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    }
   },
 }
 
