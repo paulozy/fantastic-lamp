@@ -209,7 +209,6 @@ export default function SchedulePage() {
         if (data.error === "FEATURE_NOT_AVAILABLE" || data.error === "PLAN_LIMIT_EXCEEDED") {
           trackEvent("pro_feature_blocked", {
             feature: "auto_generate",
-            reason: data.error === "PLAN_LIMIT_EXCEEDED" ? "plan_limit_exceeded" : "feature_not_available",
           })
           setPaywallType(data.error)
           setPaywallOpen(true)
@@ -285,7 +284,6 @@ export default function SchedulePage() {
       }
 
       setShifts((prev) => prev.filter((s) => s.id !== shiftToDelete.id))
-      trackEvent("shift_deleted")
       setDeleteShiftOpen(false)
       setShiftToDelete(null)
     } catch {
@@ -351,10 +349,6 @@ export default function SchedulePage() {
       if (!shiftRes.ok) {
         const data = await shiftRes.json()
         if (data.error === "FEATURE_NOT_AVAILABLE" || data.error === "PLAN_LIMIT_EXCEEDED") {
-          trackEvent("pro_feature_blocked", {
-            feature: "add_shift",
-            reason: data.error === "PLAN_LIMIT_EXCEEDED" ? "plan_limit_exceeded" : "feature_not_available",
-          })
           setPaywallType(data.error)
           setPaywallOpen(true)
           setAddShiftOpen(false)
@@ -365,7 +359,6 @@ export default function SchedulePage() {
 
       const newShift = await shiftRes.json()
 
-      trackEvent("shift_created")
       setShifts((prev) => [...prev, newShift])
       setAddShiftOpen(false)
     } catch (err) {
@@ -660,7 +653,7 @@ export default function SchedulePage() {
                               </button>
                             )}
                             <p className={`font-medium text-gray-900 text-sm ${!isPastWeek ? "pr-6" : ""}`}>
-                              {getEmployeeName(shift.employee!.id)}
+                              {getEmployeeName(shift.employeeId)}
                             </p>
                             <p className="text-xs text-gray-500 mt-1">
                               {shift.startTime} - {shift.endTime}

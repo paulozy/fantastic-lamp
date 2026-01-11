@@ -43,13 +43,6 @@ export async function sendFeedback(data: FeedbackData): Promise<{ success: boole
       return { success: false, error: "Failed to send feedback" }
     }
 
-    if (typeof window !== "undefined" && (window as any).gtag) {
-      ; (window as any).gtag("event", "feedback_submitted", {
-        feedback_type: data.type,
-        page: data.page,
-      })
-    }
-
     return { success: true }
   } catch {
     return { success: false, error: "Erro ao enviar feedback" }

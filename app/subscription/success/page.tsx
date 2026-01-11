@@ -1,18 +1,8 @@
-"use client"
-
 import { Button } from "@/components/ui/button"
-import { trackEvent } from "@/lib/ga-events"
 import { CheckCircle, Sparkles } from "lucide-react"
 import Link from "next/link"
-import { useEffect } from "react"
 
 export default function SubscriptionSuccessPage() {
-  useEffect(() => {
-    trackEvent("purchase_complete", {
-      plan: "pro",
-    })
-  }, [])
-
   return (
     <div className="min-h-screen bg-background flex items-center justify-center px-4">
       <div className="max-w-md w-full text-center">
