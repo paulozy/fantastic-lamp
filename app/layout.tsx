@@ -1,4 +1,5 @@
 import { FeedbackPopupWrapper } from "@/components/feedback-popup-wrapper"
+import GAPageView from "@/components/ga-pageview"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import type { Metadata, Viewport } from "next"
@@ -113,13 +114,13 @@ export default function RootLayout({
             />
             <Script id="google-analytics" strategy="afterInteractive">
               {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${gaId}', {
-                  page_path: window.location.pathname,
-                });
-              `}
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '${gaId}', {
+          'page_path': window.location.pathname,
+        });
+      `}
             </Script>
           </>
         )}
@@ -133,6 +134,7 @@ export default function RootLayout({
         )}
       </head>
       <body className="font-sans antialiased">
+        <GAPageView />
         {children}
 
         {/* Feedback Popup (Client Component Wrapper) */}
