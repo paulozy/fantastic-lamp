@@ -5,6 +5,7 @@ import type React from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { trackEvent } from "@/lib/ga-events"
 import { Loader2 } from "lucide-react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
@@ -38,6 +39,7 @@ export default function LoginPage() {
       }
 
       localStorage.setItem("escalaProntaToken", data.token)
+      trackEvent("login")
 
       router.push("/schedule")
     } catch (err) {
