@@ -653,7 +653,7 @@ export default function SchedulePage() {
                               </button>
                             )}
                             <p className={`font-medium text-gray-900 text-sm ${!isPastWeek ? "pr-6" : ""}`}>
-                              {getEmployeeName(shift.employeeId)}
+                              {getEmployeeName(shift.employee!.id)}
                             </p>
                             <p className="text-xs text-gray-500 mt-1">
                               {shift.startTime} - {shift.endTime}
