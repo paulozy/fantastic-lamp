@@ -15,6 +15,7 @@ import {
   Zap,
 } from "lucide-react"
 import type { Metadata } from "next"
+import Link from "next/link"
 
 export const metadata: Metadata = {
   title: "EscalaPronta - Gerador de Escalas de Trabalho Automático",
@@ -48,11 +49,11 @@ export default function LandingPage() {
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="text-2xl font-bold text-blue-600">EscalaPronta</div>
           <nav className="flex items-center gap-6">
-            <TrackedLink href="/pricing" event="pricing_link_click" className="text-gray-600 hover:text-gray-900 font-medium">
+            <Link href="/pricing" className="text-gray-600 hover:text-gray-900 font-medium">
               Preços
-            </TrackedLink>
+            </Link>
             <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50 bg-transparent" asChild>
-              <TrackedLink href="/login" event="login_link_click">Entrar</TrackedLink>
+              <Link href="/login">Entrar</Link>
             </Button>
           </nav>
         </div>
@@ -234,7 +235,7 @@ export default function LandingPage() {
                 </li>
               </ul>
               <Button variant="outline" className="w-full border-gray-300 bg-transparent" asChild>
-                <TrackedLink href="/signup" event="free_plan_cta">Começar grátis</TrackedLink>
+                <Link href="/signup">Começar grátis</Link>
               </Button>
             </div>
 
@@ -267,7 +268,7 @@ export default function LandingPage() {
                 </li>
               </ul>
               <Button className="w-full bg-blue-600 hover:bg-blue-700" asChild>
-                <TrackedLink href="/pricing" event="pro_plan_cta">Ver plano Pro</TrackedLink>
+                <Link href="/pricing">Ver plano Pro</Link>
               </Button>
             </div>
           </div>
@@ -288,7 +289,7 @@ export default function LandingPage() {
             className="bg-white text-blue-600 hover:bg-blue-50 text-lg px-8 py-6 h-auto font-semibold"
             asChild
           >
-            <TrackedLink href="/signup" event="final_cta_click">Criar minha escala agora</TrackedLink>
+            <Link href="/signup">Criar minha escala agora</Link>
           </Button>
         </div>
       </section>
