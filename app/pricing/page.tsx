@@ -1,10 +1,11 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
+import { trackEvent } from "@/lib/ga-events"
 import { Check, Loader2 } from "lucide-react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
 
@@ -13,6 +14,8 @@ export default function PricingPage() {
   const [loading, setLoading] = useState(false)
 
   const handleUpgrade = async () => {
+    trackEvent("upgrade_click")
+
     const token = localStorage.getItem("escalaProntaToken")
 
     if (!token) {
@@ -53,6 +56,10 @@ export default function PricingPage() {
       router.push("/signup")
     }
   }
+
+  useEffect(() => {
+    trackEvent("pricing_view")
+  }, [])
 
   return (
     <div className="min-h-screen bg-background">

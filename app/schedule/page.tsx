@@ -16,6 +16,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { trackEvent } from "@/lib/ga-events"
 import { ChevronLeft, ChevronRight, Loader2, Plus, Trash2, Zap } from "lucide-react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
@@ -206,6 +207,9 @@ export default function SchedulePage() {
       if (!genRes.ok) {
         const data = await genRes.json()
         if (data.error === "FEATURE_NOT_AVAILABLE" || data.error === "PLAN_LIMIT_EXCEEDED") {
+          trackEvent("pro_feature_blocked", {
+            feature: "auto_generate",
+          })
           setPaywallType(data.error)
           setPaywallOpen(true)
           setGenerating(false)
@@ -214,6 +218,7 @@ export default function SchedulePage() {
         throw new Error("Erro ao gerar escala")
       }
 
+      trackEvent("first_schedule_generated")
       await fetchData()
     } catch {
       setError("Erro ao gerar escala automaticamente")

@@ -9,6 +9,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import { trackEvent } from "@/lib/ga-events"
 import { Pencil, Plus, UserX } from "lucide-react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
@@ -165,10 +166,14 @@ export default function EmployeesPage() {
         if (!response.ok) {
           const data = await response.json()
           if (data.error === "PLAN_LIMIT_REACHED" || data.error === "FEATURE_NOT_AVAILABLE") {
+            trackEvent("pro_feature_blocked", {
+              feature: "employee_creation",
+            })
             setDialogOpen(false)
             setPaywallType(data.error)
             setPaywallOpen(true)
             setSaving(false)
+
             return
           }
           throw new Error(data.error || "Falha ao criar funcionário")
