@@ -1,6 +1,6 @@
 import { StructuredData } from "@/components/structured-data"
+import { TrackedLink } from "@/components/tracked-link"
 import { Button } from "@/components/ui/button"
-import { trackEvent } from "@/lib/ga-events"
 import { organizationSchema, softwareAppSchema } from "@/lib/metadata"
 import {
   AlertCircle,
@@ -68,7 +68,9 @@ export default function LandingPage() {
           Pare de perder horas toda semana montando escala na mão. Deixa que o EscalaPronta resolve.
         </p>
         <Button size="lg" className="mt-10 bg-blue-600 hover:bg-blue-700 text-white text-lg px-8 py-6 h-auto" asChild>
-          <Link href="/signup" onClick={() => trackEvent("cta_click")}>Criar minha escala agora</Link>
+          <TrackedLink href="/signup" event="cta_click">
+            Criar minha escala agora
+          </TrackedLink>
         </Button>
         <p className="mt-4 text-sm text-gray-500">Grátis para equipes de até 5 funcionários</p>
       </section>
