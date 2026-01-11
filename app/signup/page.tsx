@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { trackEvent } from "@/lib/ga-events"
 import { Loader2 } from "lucide-react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
@@ -36,7 +37,6 @@ export default function SignUpPage() {
     setError(null)
 
     try {
-      // Call the /companies/register endpoint which creates both company and admin user
       const response = await fetch(`${API_BASE_URL}/companies/register`, {
         method: "POST",
         headers: {
@@ -44,7 +44,7 @@ export default function SignUpPage() {
         },
         body: JSON.stringify({
           companyName: formData.companyName,
-          segment: "General", // Default segment
+          segment: "General",
           adminEmail: formData.email,
           adminPassword: formData.password,
         }),
@@ -57,6 +57,7 @@ export default function SignUpPage() {
       }
 
       localStorage.setItem("escalaProntaToken", data.token)
+      trackEvent("signup_success")
 
       router.push("/employees")
       return
